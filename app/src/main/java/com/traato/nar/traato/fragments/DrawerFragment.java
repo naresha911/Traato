@@ -15,6 +15,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.traato.nar.traato.MyApplication;
 import com.traato.nar.traato.R;
 import com.traato.nar.traato.api.GsonRequest;
+import com.traato.nar.traato.entities.AssociationItemList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,22 +36,23 @@ public class DrawerFragment extends Fragment {
 
     public void getDrawerItems()
     {
-        String url = "http://truebaniya.com/traato/traato/api/customers";
+        String url = "http://truebaniya.com/traato/traato/api/categories?output_format=JSON";
         //String url = "http://www.pcworld.com/index.rss";
-        GsonRequest<> stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        GsonRequest<AssociationItemList> gsonRequest = new GsonRequest<>(Request.Method.GET, url, null, AssociationItemList.class, new Response.Listener<AssociationItemList>() {
+
             @Override
-            public void onResponse(String response) {
-                Log.d("Response", response);
+            public void onResponse(AssociationItemList response) {
+                Log.d("Response", response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("Error", error.toString());
             }
-        });
+        }, null, "VJW7YLU22B82GAV2S62NTY4G8AX7QA5C");
 
         MyApplication instance = MyApplication.getInstance();
-        instance.addToRequestQueue(stringRequest, "DrawerItems");
+        instance.addToRequestQueue(gsonRequest, "DrawerItems");
     }
 }
 
