@@ -14,6 +14,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.traato.nar.traato.MyApplication;
 import com.traato.nar.traato.R;
+import com.traato.nar.traato.api.GsonRequest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by nar on 2/24/2017.
@@ -33,7 +37,7 @@ public class DrawerFragment extends Fragment {
     {
         String url = "http://truebaniya.com/traato/traato/api/customers";
         //String url = "http://www.pcworld.com/index.rss";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        GsonRequest<> stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("Response", response);
@@ -47,9 +51,41 @@ public class DrawerFragment extends Fragment {
 
         MyApplication instance = MyApplication.getInstance();
         instance.addToRequestQueue(stringRequest, "DrawerItems");
-
-
-
-
     }
 }
+
+/*
+class Root
+{
+    private List<Category> categories;
+    public void setCategories(List<Category> categories)
+    {
+        this.categories = categories;
+    }
+
+    public String toString()
+    {
+        String str = "";
+        for(int ii = 0; ii < categories.size(); ++ii)
+        {
+            String str2 = String.format("CatId : %d\n", categories.get(ii).getid());
+            str += str2;
+        }
+        return str;
+    }
+}
+
+class Category
+{
+    private long id;
+    public Category() {}
+    public void setid(long id)
+    {
+        this.id = id;
+    }
+    public long getid()
+    {
+        return id;
+    }
+}
+ */

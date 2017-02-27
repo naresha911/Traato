@@ -1,4 +1,4 @@
-package bf.io.openshop.api;
+package com.traato.nar.traato.api;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -14,19 +14,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.JsonSyntaxException;
+import com.traato.nar.traato.MyApplication;
+import com.traato.nar.traato.Utils.Utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.Map;
-
-import bf.io.openshop.BuildConfig;
-import bf.io.openshop.CONST;
-import bf.io.openshop.MyApplication;
-import bf.io.openshop.utils.Utils;
-import bf.io.openshop.ux.dialogs.LoginDialogFragment;
-import bf.io.openshop.ux.dialogs.LoginExpiredDialogFragment;
-import timber.log.Timber;
 
 /**
  * Basic request using Gson's reflection.
@@ -130,8 +124,8 @@ public class GsonRequest<T> extends Request<T> {
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
         try {
             requestStatusCode = response.statusCode;
-            if (BuildConfig.DEBUG)
-                Timber.d("%s URL: %s. ResponseCode: %d", this.getClass().getSimpleName(), requestUrl, response.statusCode);
+            //if (BuildConfig.DEBUG)
+             //   Timber.d("%s URL: %s. ResponseCode: %d", this.getClass().getSimpleName(), requestUrl, response.statusCode);
 
             // Parse response and return obtained object
             String json = new String(response.data, PROTOCOL_CHARSET);
