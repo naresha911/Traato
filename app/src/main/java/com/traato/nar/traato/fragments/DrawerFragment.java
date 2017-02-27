@@ -53,41 +53,11 @@ public class DrawerFragment extends Fragment {
 
         MyApplication instance = MyApplication.getInstance();
         instance.addToRequestQueue(gsonRequest, "DrawerItems");
+
+
     }
 }
 
-/*
-class Root
-{
-    private List<Category> categories;
-    public void setCategories(List<Category> categories)
-    {
-        this.categories = categories;
-    }
 
-    public String toString()
-    {
-        String str = "";
-        for(int ii = 0; ii < categories.size(); ++ii)
-        {
-            String str2 = String.format("CatId : %d\n", categories.get(ii).getid());
-            str += str2;
-        }
-        return str;
-    }
-}
 
-class Category
-{
-    private long id;
-    public Category() {}
-    public void setid(long id)
-    {
-        this.id = id;
-    }
-    public long getid()
-    {
-        return id;
-    }
-}
- */
+
