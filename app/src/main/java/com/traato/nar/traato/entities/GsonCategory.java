@@ -3,25 +3,12 @@ package com.traato.nar.traato.entities;
 import java.util.List;
 
 /**
- * Created by Naresh on 27-02-2017.
+ * Created by nar on 2/28/2017.
  */
 
-public class DrawerItemCategory {
-    private Catgry category;
-    public void setcategory(Catgry category)
-    {
-        this.category = category;
-    }
-    public String toString()
-    {
-        return category.getString();
-    }
-
-}
-
-class Catgry
+public class GsonCategory
 {
-    private int id;
+    private long id;
     private String id_parent;
     private String level_depth;
     private String name;
@@ -45,14 +32,15 @@ class Catgry
 
     public void setAssociations(AssociationItemList associations) { this.associations = associations; }
 
+    public AssociationItemList getAssociations() { return associations; }
+
     public void setName(String name){ this.name = name; }
 
     public String getString()
     {
-        String str = String.format("Id : %d\n IdParent:%s\n LevelParent:%s Association:%s",
-                id,id_parent,level_depth,associations);
-
-        System.out.println("ID:" + id);
-        return str;
+        return "Id : " + id
+                + "\nIdParent :" + id_parent
+                + "\nLevelParent :" + level_depth
+                + "\nAssociation : " + associations;
     }
 }

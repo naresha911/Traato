@@ -9,10 +9,12 @@ import java.util.List;
 public class AssociationItemList {
 
     private List<AssociationItem> categories;
+
     public void setCategories(List<AssociationItem> categories)
     {
         this.categories = categories;
     }
+    public List<AssociationItem> getCategories() { return categories; };
 
     public String toString()
     {
