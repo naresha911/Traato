@@ -11,14 +11,10 @@ import android.view.ViewGroup;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.traato.nar.traato.MyApplication;
 import com.traato.nar.traato.R;
 import com.traato.nar.traato.api.GsonRequest;
-import com.traato.nar.traato.entities.AssociationItemList;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.traato.nar.traato.entities.DrawerItemCategory;
 
 /**
  * Created by nar on 2/24/2017.
@@ -36,12 +32,11 @@ public class DrawerFragment extends Fragment {
 
     public void getDrawerItems()
     {
-        String url = "http://truebaniya.com/traato/traato/api/categories?output_format=JSON";
-        //String url = "http://www.pcworld.com/index.rss";
-        GsonRequest<AssociationItemList> gsonRequest = new GsonRequest<>(Request.Method.GET, url, null, AssociationItemList.class, new Response.Listener<AssociationItemList>() {
+        String url = "http://truebaniya.com/traato/traato/api/categories/149?output_format=JSON";
+        GsonRequest<DrawerItemCategory> gsonRequest = new GsonRequest<>(Request.Method.GET, url, null, DrawerItemCategory.class, new Response.Listener<DrawerItemCategory>() {
 
             @Override
-            public void onResponse(AssociationItemList response) {
+            public void onResponse(DrawerItemCategory response) {
                 Log.d("Response", response.toString());
             }
         }, new Response.ErrorListener() {
