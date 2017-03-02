@@ -1,6 +1,6 @@
 package com.traato.nar.traato;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mDrawerFragment = (DrawerFragment)getFragmentManager().findFragmentById(R.id.main_navigation_drawer_fragment);
+        mDrawerFragment = (DrawerFragment)getSupportFragmentManager().findFragmentById(R.id.main_navigation_drawer_fragment);
 
     }
 }

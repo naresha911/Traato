@@ -35,12 +35,10 @@ public class GsonCategory
     public AssociationItemList getAssociations() { return associations; }
 
     public void setName(String name){ this.name = name; }
+    public String getName() { return name; }
 
-    public String getString()
+    public String toString()
     {
-        return "Id : " + id
-                + "\nIdParent :" + id_parent
-                + "\nLevelParent :" + level_depth
-                + "\nAssociation : " + associations;
+        return name;
     }
 }

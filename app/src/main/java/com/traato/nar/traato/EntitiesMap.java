@@ -16,11 +16,11 @@ import java.util.Map;
  */
 
 public class EntitiesMap {
-    private static Map<Long, CategoryEntity> mIndexCategoryMap;
+    private static Map<Long, CategoryEntity> mIndexCategoryMap = new HashMap<>();
 
     public static CategoryEntity getCategoryGivenIndex(long id)
     {
-        if(mIndexCategoryMap.isEmpty() || mIndexCategoryMap.containsKey(id) == false)
+     /*   if(mIndexCategoryMap.isEmpty() || mIndexCategoryMap.containsKey(id) == false)
         {
             getCategoryFromJsonFile(id);
         }
@@ -28,7 +28,10 @@ public class EntitiesMap {
         {
             CategoryEntity categoryEntity = mIndexCategoryMap.get(id);
             mIndexCategoryMap.put(id, categoryEntity);
-        }
+        }*/
+
+        if(mIndexCategoryMap.isEmpty() || mIndexCategoryMap.containsKey(id) == false)
+            return null;
 
         return  mIndexCategoryMap.get(id);
     }
@@ -40,7 +43,7 @@ public class EntitiesMap {
      */
     private static void getCategoryFromJsonFile(long id)
     {
-        final long tempId = id; //Added to stop compilation error
+        final long tempId = id; //Added to stop compilation
 
         String url = String.format(EndPoints.CATEGORIES, id);
         GsonRequest<CategoryEntity> gsonRequest = new GsonRequest<>(Request.Method.GET, url, null, CategoryEntity.class, new Response.Listener<CategoryEntity>() {
@@ -60,6 +63,7 @@ public class EntitiesMap {
 
         MyApplication instance = MyApplication.getInstance();
         instance.addToRequestQueue(gsonRequest, "DrawerItems");
+
     }
 
 }

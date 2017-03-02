@@ -15,10 +15,14 @@ public class CategoryEntity {
     {
         this.category = category;
     }
+    public GsonCategory getGsonCategory()
+    {
+        return category;
+    }
 
     public String toString()
     {
-        return category.getString();
+        return category.getName();
     }
 
     public List<CategoryEntity> getSubCategories()

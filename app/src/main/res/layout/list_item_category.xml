@@ -9,7 +9,6 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
         android:paddingBottom="5dp">
 
@@ -31,16 +30,19 @@
             tools:text="Just arrived"/>
 
         <ImageView
-            android:id="@+id/drawer_list_item_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:contentDescription="@string/content_description_submenu"
-            android:visibility="invisible"
-            tools:visibility="visible"/>
+                android:id="@+id/drawer_list_item_indicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:contentDescription="@string/content_description_submenu"
+                android:visibility="invisible"
+                tools:visibility="visible"
+            android:layout_weight="1" />
+
     </LinearLayout>
+
 
     <View
         android:id="@+id/drawer_list_item_divider"
