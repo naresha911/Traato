@@ -18,6 +18,9 @@
     <color name="colorAccent">#ee1f65</color>
     <color name="colorAccentDark">#c2185b</color>
 
+    <color name="facebook_bg">#3b5998</color>
+    <color name="facebook_bg_pressed">#2a406e</color>
+
     <color name="transparent">#00000000</color>
     <color name="semi_transparent">#bd000000</color>
     <color name="black_transparent_70percent">#B3000000</color>

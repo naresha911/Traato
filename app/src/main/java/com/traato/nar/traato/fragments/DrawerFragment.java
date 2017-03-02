@@ -35,8 +35,6 @@ public class DrawerFragment extends Fragment {
     public void getDrawerItems()
     {
         EntitiesMap.getCategoryGivenIndex(CONST.HOME_CATEGORY);
-
-
     }
 }
 
