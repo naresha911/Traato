@@ -19,6 +19,7 @@ public class GsonCategory
     {
         this.id = id;
     }
+    public long getGsonCategoryId() { return id; }
 
     public void setIdParent(String id_parent)
     {

@@ -44,7 +44,7 @@ public class DrawerFragment extends Fragment {
 
         getDrawerItems();
 
-        //prepareDrawerRecyclerView(layout);
+        //prepareDrawerRecyclerView(mLayout);
 
         return mLayout;
     }
@@ -57,20 +57,25 @@ public class DrawerFragment extends Fragment {
             @Override
             public void onResponse(CategoryEntity categoryEnt) {
                 Log.d("Response", categoryEnt.toString());
+                prepareDrawerRecyclerView(mLayout);
+                mRecyclerAdapter.addCategoryItem(categoryEnt);
+               // mRecyclerAdapter.notifyDataSetChanged();
 
                 GsonCategory gsonCategory = categoryEnt.getGsonCategory();
 
                 AssociationItemList assocItemList = gsonCategory.getAssociations();
-                List<AssociationItem> subGsonCategories = assocItemList.getCategories();
+                final List<AssociationItem> subGsonCategories = assocItemList.getCategories();
                 if(subGsonCategories.isEmpty())
                     return;
 
                 int count = subGsonCategories.size();
+                final long lastId = subGsonCategories.get(count-1).getid();
                 for(int ii = 0; ii < count; ++ii)
                 {
                     long id = subGsonCategories.get(ii).getid();
 
                     CategoryEntity catEnt = EntitiesMap.getCategoryGivenIndex(id);
+
                     if(catEnt == null)
                     {
                         String url = String.format(EndPoints.CATEGORIES, id);
@@ -78,14 +83,15 @@ public class DrawerFragment extends Fragment {
 
                             @Override
                             public void onResponse(CategoryEntity categoryEnt) {
-                                if(mRecyclerAdapter == null)
-                                    prepareDrawerRecyclerView(mLayout);
 
                                 mRecyclerAdapter.addCategoryItem(categoryEnt);
-                                mRecyclerAdapter.notifyDataSetChanged();
+                                //GsonCategory gsonCategory = categoryEnt.getGsonCategory();
+                                //if(lastId == gsonCategory.getGsonCategoryId()) {
+                                    mRecyclerAdapter.notifyDataSetChanged();
+                                //}
 
-                                if (mRecyclerview != null) mRecyclerview.setVisibility(View.VISIBLE);
-                                if (mRecyclerview != null) mRecyclerview.setVisibility(View.GONE);
+                            if (mRecyclerview != null) mRecyclerview.setVisibility(View.VISIBLE);
+                            //if (mRecyclerview != null) mRecyclerview.setVisibility(View.GONE);
 
                             }
                         }, new Response.ErrorListener() {
@@ -105,7 +111,7 @@ public class DrawerFragment extends Fragment {
                         mRecyclerAdapter.notifyDataSetChanged();
 
                         if (mRecyclerview != null) mRecyclerview.setVisibility(View.VISIBLE);
-                        if (mRecyclerview != null) mRecyclerview.setVisibility(View.GONE);
+                        //if (mRecyclerview != null) mRecyclerview.setVisibility(View.GONE);
                     }
 
 
@@ -127,10 +133,11 @@ public class DrawerFragment extends Fragment {
     {
         mRecyclerview = (RecyclerView) view.findViewById(R.id.drawer_recycler);
         mRecyclerAdapter = new DrawerRecyclerAdapter(getContext());
+        mRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mRecyclerview.setHasFixedSize(true);
         mRecyclerview.setAdapter(mRecyclerAdapter);
-        mRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
 }
 

@@ -46,21 +46,24 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         ((ViewHolderItemCategory) holder).mTextView.setText(gsonCategory.getName());
         viewHolderItemCategory.mDivider.setVisibility(View.VISIBLE);
 
-        if (categoryEntity.getSubCategories() == null || categoryEntity.getSubCategories().isEmpty()) {
+       // if (categoryEntity.getSubCategories() == null || categoryEntity.getSubCategories().isEmpty()) {
             viewHolderItemCategory.mSubMenuIndicator.setVisibility(View.INVISIBLE);
-        } else {
-            viewHolderItemCategory.mSubMenuIndicator.setVisibility(View.VISIBLE);
-        }
+//        } else {
+//            viewHolderItemCategory.mSubMenuIndicator.setVisibility(View.VISIBLE);
+//        }
     }
 
     @Override
     public int getItemCount() {
+        if(mCategoryList == null)
+            return 0;
+
         return mCategoryList.size() ;
     }
 
     public CategoryEntity getCategory(int position)
     {
-        return mCategoryList.get(position-1);
+        return mCategoryList.get(position);
     }
 
     public void addCategoryList(List<CategoryEntity> categoryList)

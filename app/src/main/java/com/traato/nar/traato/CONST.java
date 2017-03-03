@@ -6,5 +6,5 @@ package com.traato.nar.traato;
 
 public class CONST {
     public static String ACCESS_TOKEN = "VJW7YLU22B82GAV2S62NTY4G8AX7QA5C";
-    public static long HOME_CATEGORY = 149;
+    public static long HOME_CATEGORY = 2;
 }
