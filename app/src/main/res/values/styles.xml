@@ -1,7 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="MaterialTheme" parent="MaterialThemeSupportBase"/>
+
+    <!-- Base application theme. -->
+    <style name="MaterialThemeSupportBase" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
